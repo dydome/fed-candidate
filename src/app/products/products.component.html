@@ -1,0 +1,63 @@
+<div class="product-container">
+  <div class="header">
+    <div class="view-and-title">
+      <!-- Toggle Layout Button with Icons -->
+      <button (click)="toggleLayout()" class="view-toggle-btn">
+        <span>{{ isGridView ? 'Grid View' : 'List View' }}</span>
+        <i class="fa" [ngClass]="isGridView ? 'fa-th-large' : 'fa-list'"></i>
+      </button>
+
+      <h2>{{ sortedProducts.length }} results</h2>
+    </div>
+
+    <!-- Filters and Sort Section -->
+    <div class="filters-and-sort">
+      <div>
+        <label for="sort">Sort By:</label>
+        <select id="sort" (change)="onSortChange($event)">
+          <option value="relevant">Most Relevant</option>
+          <option value="priceAsc">Price: Low to High</option>
+          <option value="priceDesc">Price: High to Low</option>
+          <option value="rating">Highest Rated</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="size">Size:</label>
+        <select id="size" (change)="onSizeChange($event)">
+          <option value="">All</option>
+          <option *ngFor="let size of getUniqueSizes()" [value]="size">{{ size }}</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- Product List Section -->
+  <div class="product-list" [ngClass]="{ 'list-view': !isGridView }">
+    <div *ngFor="let product of sortedProducts" class="product-card">
+      <div *ngIf="product.picture" class="image-container">
+        <img [src]="product.picture" alt="{{ product.name }}" />
+        <button class="fav-btn" [ngClass]="{ fav: product.isFav }">♥</button>
+      </div>
+
+      <div class="product-info">
+        <h3 *ngIf="product.name">{{ product.name }}</h3>
+
+        <div class="size-and-rating">
+          <p *ngIf="product.size" class="size">{{ product.size }}</p>
+          <div *ngIf="product.rating" class="rating">
+            <ng-container *ngFor="let star of getFullStars(product.rating)">
+              <span class="filled">&#9733;</span>
+            </ng-container>
+          </div>
+        </div>
+
+        <p *ngIf="product.price" class="price">
+          {{ product.price }}
+          <span *ngIf="product.oldPrice" class="old-price">{{ product.oldPrice }}</span>
+          <span *ngIf="product.savings" class="savings">You save: {{ product.savings }}</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

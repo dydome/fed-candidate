@@ -1,0 +1,15 @@
+<div class="photo-list">
+  <h2>Photos</h2>
+  <ul>
+    <li *ngFor="let photo of photos | slice : 0 : 75">
+      <div class="photo-item">
+        <!-- [src]="photo.thumbnailUrl"  thumbnailUrl is not working-->
+        <img [src]="'http://placehold.co/150x150'" [alt]="photo.title" />
+        <div class="photo-info">
+          <h3>{{ photo.title }}</h3>
+          <button (click)="removePhoto(photo)"><i class="fa fa-trash"></i> Remove</button>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>

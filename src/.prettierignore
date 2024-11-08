@@ -1,0 +1,7 @@
+build
+dist
+node_modules
+.github
+package-lock.json
+yarn.lock
+e2e/**

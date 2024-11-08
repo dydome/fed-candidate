@@ -1,0 +1,34 @@
+<div class="removed-items">
+  <h2>Removed Photos</h2>
+
+  <ul *ngIf="removedPhotos.length; else noRemovedPhotos">
+    <li *ngFor="let photo of removedPhotos" class="photo-item">
+      <!-- [src]="photo.thumbnailUrl"  thumbnailUrl is not working-->
+      <img [src]="'http://placehold.co/150x150'" [alt]="photo.title" />
+      <div class="photo-info">
+        <h3>{{ photo.title }}</h3>
+      </div>
+    </li>
+  </ul>
+
+  <ng-template #noRemovedPhotos>
+    <div class="no-items" id="no-removed-photos">
+      <p>No photos removed yet.</p>
+    </div>
+  </ng-template>
+
+  <h2>Removed Posts</h2>
+
+  <ul *ngIf="removedPosts.length; else noRemovedPosts">
+    <li *ngFor="let post of removedPosts">
+      <h3>{{ post.title }}</h3>
+      <p>{{ post.body }}</p>
+    </li>
+  </ul>
+
+  <ng-template #noRemovedPosts>
+    <div class="no-items" id="no-removed-posts">
+      <p>No posts removed yet.</p>
+    </div>
+  </ng-template>
+</div>

@@ -1,0 +1,77 @@
+.removed-items {
+  padding: 20px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.removed-items h2 {
+  text-align: center;
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 0;
+  margin-bottom: 2rem;
+}
+
+li {
+  background-color: #f9f9f9;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+li:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+img {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+  border-radius: 5px;
+}
+
+p {
+  margin-top: 10px;
+  color: #555;
+}
+
+.no-items {
+  display: block;
+  color: #777;
+  text-align: center;
+  font-style: italic;
+  margin-top: 15px;
+  font-size: 1.1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .removed-items {
+    padding: 10px;
+  }
+
+  li {
+    padding: 10px;
+  }
+
+  img {
+    width: 40px;
+    height: 40px;
+  }
+
+  p {
+    font-size: 0.9rem;
+  }
+
+  .no-items {
+    font-size: 1rem; /* Slightly smaller text for mobile */
+  }
+}
